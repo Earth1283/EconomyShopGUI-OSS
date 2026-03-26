@@ -96,6 +96,7 @@ enum class Lang(val default: String) {
     SELLGUI_WORLD_DISABLED("<red>Sell GUI is disabled in this world."),
 
     // ── Shop Give (/shopgive) ─────────────────────────────────────────────────
+    SHOPGIVE_USAGE("<yellow>Usage: /shopgive <section.item> <player> [qty]"),
     SHOPGIVE_SUCCESS("<green>Gave <white><qty>x <item></white> to <yellow><player></yellow>."),
     SHOPGIVE_RECEIVED("<green>You received <white><qty>x <item></white> from <yellow><sender></yellow>."),
     SHOPGIVE_INVALID_ITEM("<red>Item <yellow><item></yellow> was not found in any shop section."),
@@ -218,6 +219,53 @@ enum class Lang(val default: String) {
     MODIFIER_DISCOUNT_APPLIED("<gray>Discount applied: <green>-<percent>%"),
     MODIFIER_MULTIPLIER_APPLIED("<gray>Price multiplier: <gold>×<factor>"),
     MODIFIER_SEASONAL("<gray>Seasonal price (<season>): <gold><price>"),
+
+    // ── Navigation GUI ────────────────────────────────────────────────────────
+    NAV_PREVIOUS_PAGE("<yellow>← Previous Page <gray>(Page <page>)"),
+    NAV_NEXT_PAGE("<yellow>Next Page → <gray>(Page <page>)"),
+    NAV_MAIN_MENU("<yellow>⌂ Main Menu"),
+
+    // ── Buy/Sell Quantity Screens ─────────────────────────────────────────────
+    BUY_SCREEN_TITLE("<dark_gray>Buy: <white><item>"),
+    BUY_SCREEN_PRICE("<gray>Price per unit: <gold><price>"),
+    BUY_SCREEN_QTY("<gray>Quantity: <white><qty>"),
+    BUY_SCREEN_ADD("<green>+<amount>"),
+    BUY_SCREEN_REMOVE("<red><amount>"),
+    SELL_SCREEN_TITLE("<dark_gray>Sell: <white><item>"),
+    SELL_SCREEN_PRICE("<gray>Price per unit: <gold><price>"),
+    SELL_SCREEN_QTY("<gray>Quantity: <white><qty>"),
+
+    // ── Sell GUI ──────────────────────────────────────────────────────────────
+    SELL_GUI_TITLE("<dark_gray>Sell Items"),
+    SELL_GUI_CONFIRM("<green>✔ Sell Items"),
+    SELL_GUI_CONFIRM_LORE("<gray>Close or click to sell all items above."),
+
+    // ── Transaction Confirm/Cancel ────────────────────────────────────────────
+    CONFIRM("<green>✔ Confirm — Buy <qty>x for <gold><price></gold>"),
+    CONFIRM_SELL("<green>✔ Confirm — Sell <qty>x for <gold><price></gold>"),
+    CANCEL("<red>✘ Cancel"),
+
+    // ── Shorthand Transaction Failure Messages ────────────────────────────────
+    NOT_ENOUGH_MONEY(
+        "<red>Insufficient funds. You need <gold><amount></gold> " +
+        "but have <gold><balance></gold>."
+    ),
+    INVENTORY_FULL("<red>Your inventory is full."),
+    NOT_ENOUGH_ITEMS(
+        "<red>You only have <yellow><held></yellow> " +
+        "of the required <yellow><required></yellow>."
+    ),
+    CANNOT_BUY("<red>This item cannot be purchased."),
+    CANNOT_SELL("<red>This item cannot be sold."),
+    REQUIREMENT_NOT_MET("<red>Requirement not met: <yellow><requirement>"),
+    ECONOMY_UNAVAILABLE("<red>The economy plugin is not available. Contact an administrator."),
+    INVALID_QUANTITY(
+        "<red>Invalid quantity. Minimum: <yellow><min></yellow>, " +
+        "Maximum: <yellow><max></yellow>."
+    ),
+    GENERIC_ERROR("<red>An error occurred. Please try again."),
+    NO_ITEMS_TO_SELL("<red>You have no items to sell."),
+    SELL_ALL_SUCCESS("<green>Sold all items for a total of <gold><price></gold>."),
 
     // ── Marketplace ───────────────────────────────────────────────────────────
     MARKETPLACE_CONNECTING("<yellow>Connecting to the marketplace…"),

@@ -88,6 +88,9 @@ class ConfigManager(private val plugin: EconomyShopGUIOSS) {
             escapeBack                   = yaml.getBoolean("escape-back", defaults.escapeBack),
             mainMenuSize                 = yaml.getInt("main-menu-size", defaults.mainMenuSize)
                 .coerceIn(9, 54).let { it - (it % 9) },   // enforce multiple-of-9
+            mainMenuRows                 = yaml.getInt("main-menu-rows", defaults.mainMenuRows).coerceIn(1, 6),
+            mainMenuTitle                = yaml.getString("main-menu-title", defaults.mainMenuTitle)!!,
+            mainMenuFillItem             = yaml.getString("main-menu-fill-item", null),
             shopStandsEnabled            = yaml.getBoolean("shop-stands.enabled", defaults.shopStandsEnabled),
             shopStandsHolograms          = yaml.getBoolean("shop-stands.holograms", defaults.shopStandsHolograms),
             transactionLogEnabled        = yaml.getBoolean("transaction-log.enabled", defaults.transactionLogEnabled),
@@ -97,6 +100,8 @@ class ConfigManager(private val plugin: EconomyShopGUIOSS) {
             resizeGuiBedrock             = yaml.getBoolean("resize-gui-bedrock", defaults.resizeGuiBedrock),
             placeholderCacheSeconds      = yaml.getInt("placeholder-cache-seconds", defaults.placeholderCacheSeconds),
             usePaperMeta                 = yaml.getBoolean("use-paper-meta", defaults.usePaperMeta),
+            marketplaceUrl               = yaml.getString("marketplace.url",   defaults.marketplaceUrl)!!,
+            marketplaceToken             = yaml.getString("marketplace.token", defaults.marketplaceToken)!!,
             updateChecking               = yaml.getBoolean("update-checking", defaults.updateChecking),
             debug                        = yaml.getBoolean("debug", defaults.debug),
             disabledWorldsShop           = yaml.getStringList("disabled-worlds.shop").toSet(),

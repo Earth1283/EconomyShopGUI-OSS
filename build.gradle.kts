@@ -53,6 +53,11 @@ tasks {
     shadowJar {
         archiveClassifier.set("")
 
+        // Reproducible output — entries sorted by name so the JAR hash is
+        // stable across machines, enabling remote build-cache hits.
+        isReproducibleFileOrder = true
+        isPreserveFileTimestamps = false
+
         // Relocate all shadowed libraries to avoid classpath conflicts
         relocate("org.bstats", "io.github.Earth1283.economyShopGUIOSS.libs.bstats")
         relocate("org.xerial.sqlite", "io.github.Earth1283.economyShopGUIOSS.libs.sqlite")
@@ -84,4 +89,23 @@ tasks {
 val targetJavaVersion = 21
 kotlin {
     jvmToolchain(targetJavaVersion)
+
+    compilerOptions {
+        // Treat platform-type nullability from Java APIs as strict Kotlin nulls.
+        // Paper's APIs are well-annotated, so this catches real bugs at compile time.
+        freeCompilerArgs.addAll(
+            "-Xjsr305=strict",
+            // Emit more precise null-checks into bytecode (catches more NPEs at runtime)
+            "-Xnullability-annotations=@org.jetbrains.annotations:strict",
+        )
+    }
+}
+
+// ── Kotlin compilation performance ────────────────────────────────────────────
+// Configure all KotlinCompile tasks lazily (task-configuration avoidance).
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    compilerOptions {
+        // Add opt-in for APIs that use @RequiresOptIn (e.g. kotlinx.coroutines experimental)
+        optIn.add("kotlin.RequiresOptIn")
+    }
 }

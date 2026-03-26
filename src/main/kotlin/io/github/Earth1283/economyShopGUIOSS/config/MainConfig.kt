@@ -36,6 +36,12 @@ data class MainConfig(
     // ── Main Menu ─────────────────────────────────────────────────────────────
     /** Inventory size for the main shop menu (must be 9–54, multiple of 9). */
     val mainMenuSize: Int,
+    /** Row count of the main menu inventory (1–6). Derived from mainMenuSize. */
+    val mainMenuRows: Int,
+    /** MiniMessage string for the main menu title. */
+    val mainMenuTitle: String,
+    /** Optional fill item material name for unused slots in the main menu. */
+    val mainMenuFillItem: String?,
 
     // ── Shop Stands ───────────────────────────────────────────────────────────
     val shopStandsEnabled: Boolean,
@@ -53,6 +59,12 @@ data class MainConfig(
 
     // ── Performance ───────────────────────────────────────────────────────────
     val usePaperMeta: Boolean,
+
+    // ── Marketplace ───────────────────────────────────────────────────────────
+    /** Base URL of the layout marketplace API. */
+    val marketplaceUrl: String,
+    /** Bearer token for uploading/updating layouts. Empty string = disabled. */
+    val marketplaceToken: String,
 
     // ── Miscellaneous ─────────────────────────────────────────────────────────
     val updateChecking: Boolean,
@@ -87,6 +99,9 @@ data class MainConfig(
             middleClickSellAll = true,
             escapeBack = true,
             mainMenuSize = 54,
+            mainMenuRows = 6,
+            mainMenuTitle = "<dark_gray>Shop",
+            mainMenuFillItem = null,
             shopStandsEnabled = true,
             shopStandsHolograms = true,
             transactionLogEnabled = false,
@@ -96,6 +111,8 @@ data class MainConfig(
             resizeGuiBedrock = true,
             placeholderCacheSeconds = 0,
             usePaperMeta = true,
+            marketplaceUrl   = "https://marketplace.economyshopgui-oss.example.com/api/v1",
+            marketplaceToken = "",
             updateChecking = true,
             debug = false,
             disabledWorldsShop = emptySet(),

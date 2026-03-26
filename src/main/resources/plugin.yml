@@ -4,7 +4,7 @@ main: io.github.Earth1283.economyShopGUIOSS.EconomyShopGUIOSS
 api-version: '1.21'
 load: STARTUP
 authors: [ Earth1283 ]
-description: A clean-room Kotlin reimplementation of EconomyShopGUI with full feature parity.
+description: Open-source Kotlin shop plugin — full buy/sell GUI, multiple economy backends, rich admin tooling.
 website: https://github.com/Earth1283/EconomyShopGUI-OSS
 
 softdepend:

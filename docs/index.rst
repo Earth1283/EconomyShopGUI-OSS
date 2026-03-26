@@ -1,9 +1,9 @@
 EconomyShopGUI-OSS
 ==================
 
-A clean-room Kotlin reimplementation of the EconomyShopGUI Minecraft plugin,
-targeting full feature parity while using idiomatic Kotlin and the modern
-Adventure / MiniMessage text API throughout.
+An open-source Kotlin shop plugin for PaperMC servers, providing a full-featured
+buy/sell GUI, multiple economy backends, in-game editing, and shop stands — all
+with idiomatic Kotlin and the modern Adventure / MiniMessage text API.
 
 .. toctree::
    :maxdepth: 2
@@ -30,6 +30,7 @@ Adventure / MiniMessage text API throughout.
 
    api
    events
+   marketplace-api
    contributing
    changelog
 
