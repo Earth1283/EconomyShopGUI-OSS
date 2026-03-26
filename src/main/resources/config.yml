@@ -1,0 +1,103 @@
+# -----------------------------------------------------------------------------
+# EconomyShopGUI-OSS  •  Main Configuration
+# Text values support MiniMessage formatting: https://docs.advntr.dev/minimessage
+# -----------------------------------------------------------------------------
+
+# Internal version — do not edit
+config-version: 1
+
+# -- Language -----------------------------------------------------------------
+# Which lang-*.yml file to load from the plugin data folder.
+# Bundled: en  |  Create your own: lang-fr.yml, lang-de.yml, etc.
+language: en
+
+# -- Currency Formatting -------------------------------------------------------
+# Java locale used for number formatting (e.g. en-US → $1,234.56)
+locale: en-US
+
+# Java DecimalFormat pattern applied to all displayed prices
+currency-format: "#,##0.00"
+
+# Abbreviated large numbers (e.g. 1500 → 1.5k)
+abbreviations:
+  enabled: true
+  thresholds:
+    k: 1_000
+    m: 1_000_000
+    b: 1_000_000_000
+    t: 1_000_000_000_000
+    q: 1_000_000_000_000_000
+
+# -- Economy -------------------------------------------------------------------
+# Default economy used when a section does not specify one.
+# Options: vault | xp | playerpoints | gems
+economy: vault
+
+# -- Shop Behaviour ------------------------------------------------------------
+# Match item NBT metadata when checking whether a player has the required item
+# to sell (e.g. custom enchants, stored-enchant books).
+match-meta: false
+
+# Use the item's in-game display name instead of its material name in messages.
+use-item-name: false
+
+# When an item in the shop config has no lore defined, use the item's actual
+# in-game lore instead of leaving it blank.
+prioritize-item-lore: false
+
+# Allow players to middle-click a shop item to sell all matching items from
+# their inventory in one click.
+middle-click-sell-all: true
+
+# Press Escape (or close inventory with no click) to return to the previous menu
+# instead of simply closing the shop.
+escape-back: true
+
+# -- Main Menu -----------------------------------------------------------------
+# Inventory size for the main shop menu (the section-picker screen).
+# Must be a multiple of 9, between 9 and 54.
+main-menu-size: 54
+
+# -- Shop Stands ---------------------------------------------------------------
+shop-stands:
+  # Enable the physical shop-stand entities feature.
+  enabled: true
+  # Show floating hologram text above shop stands.
+  holograms: true
+
+# -- Transaction Logging -------------------------------------------------------
+transaction-log:
+  # Write a plain-text log of every transaction.
+  enabled: false
+  # File name relative to the plugin data folder.
+  file: transactions.log
+
+# SQLite-based transaction log (enables richer querying via /eshop transactionlogs).
+advanced-transaction-log:
+  enabled: false
+  database: transactions.db
+
+# -- Integrations -------------------------------------------------------------
+# Resize the shop inventory for Bedrock (Geyser) players who have smaller screens.
+resize-gui-bedrock: true
+
+# Cache duration (seconds) for PlaceholderAPI placeholders. 0 = no cache.
+placeholder-cache-seconds: 0
+
+# -- Performance ---------------------------------------------------------------
+# Use Paper's optimised item-metadata API when available (recommended: true).
+use-paper-meta: true
+
+# -- Miscellaneous -------------------------------------------------------------
+# Check GitHub for a newer version on startup and notify ops on join.
+update-checking: true
+
+# Print verbose debug information to the console.
+debug: false
+
+# -- Disabled Worlds -----------------------------------------------------------
+# List world names where the given command should be blocked.
+disabled-worlds:
+  shop: []
+  sellall: []
+  sellgui: []

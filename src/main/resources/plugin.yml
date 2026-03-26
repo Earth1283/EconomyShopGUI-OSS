@@ -1,6 +1,177 @@
 name: EconomyShopGUI-OSS
-version: '1.0'
+version: '${version}'
 main: io.github.Earth1283.economyShopGUIOSS.EconomyShopGUIOSS
 api-version: '1.21'
 load: STARTUP
 authors: [ Earth1283 ]
+description: A clean-room Kotlin reimplementation of EconomyShopGUI with full feature parity.
+website: https://github.com/Earth1283/EconomyShopGUI-OSS
+
+softdepend:
+  - Vault
+  - PlaceholderAPI
+  - PlayerPoints
+  - GemsEconomy
+  - WorldGuard
+  - DiscordSRV
+  - Geyser-Spigot
+  - RealisticSeasons
+  - Quests
+  - SilkSpawners
+  - WildStacker
+  - RoseStacker
+  - SmartSpawner
+  - UltimateStacker
+  - MineableSpawners
+  - SpawnerMeta
+  - SpawnerLegacy
+
+commands:
+  shop:
+    description: Open the economy shop
+    usage: /<command> [section] [page]
+    permission: economyshopgui.shop
+    aliases: [ eshopgui ]
+  sellall:
+    description: Sell all eligible items from your inventory
+    usage: /<command> [inventory|item|hand] [quantity]
+    permission: economyshopgui.sellall
+  sellgui:
+    description: Open the drag-and-drop sell GUI
+    usage: /<command>
+    permission: economyshopgui.sellgui
+  shopgive:
+    description: Give a shop item directly to a player
+    usage: /<command> <item-id> <player>
+    permission: economyshopgui.admin
+  sreload:
+    description: Reload all plugin configuration
+    usage: /<command>
+    permission: economyshopgui.admin
+  eshop:
+    description: In-game shop editor and admin tools
+    usage: /<command> <subcommand> [args...]
+    permission: economyshopgui.admin
+
+permissions:
+  economyshopgui.admin:
+    description: Access to all admin commands and the in-game shop editor
+    default: op
+    children:
+      economyshopgui.shop: true
+      economyshopgui.sellall: true
+      economyshopgui.sellgui: true
+      economyshopgui.eshop.*: true
+
+  economyshopgui.shop:
+    description: Access to /shop
+    default: true
+
+  economyshopgui.sellall:
+    description: Access to /sellall (all modes)
+    default: true
+    children:
+      economyshopgui.sellall.inventory: true
+      economyshopgui.sellall.item: true
+      economyshopgui.sellall.hand: true
+
+  economyshopgui.sellall.inventory:
+    description: Access to /sellall inventory
+    default: true
+
+  economyshopgui.sellall.item:
+    description: Access to /sellall item
+    default: true
+
+  economyshopgui.sellall.hand:
+    description: Access to /sellall hand
+    default: true
+
+  economyshopgui.sellgui:
+    description: Access to /sellgui
+    default: true
+
+  economyshopgui.eshop.*:
+    description: All in-game editor permissions
+    default: op
+    children:
+      economyshopgui.eshop.additem: true
+      economyshopgui.eshop.edititem: true
+      economyshopgui.eshop.deleteitem: true
+      economyshopgui.eshop.addsection: true
+      economyshopgui.eshop.editsection: true
+      economyshopgui.eshop.deletesection: true
+      economyshopgui.eshop.import: true
+      economyshopgui.eshop.migrate: true
+      economyshopgui.eshop.layout: true
+      economyshopgui.eshop.transactionlogs: true
+      economyshopgui.eshop.shopstands.*: true
+
+  economyshopgui.eshop.additem:
+    description: Add items to the shop via /eshop additem
+    default: op
+
+  economyshopgui.eshop.edititem:
+    description: Edit shop items via /eshop edititem
+    default: op
+
+  economyshopgui.eshop.deleteitem:
+    description: Delete shop items via /eshop deleteitem
+    default: op
+
+  economyshopgui.eshop.addsection:
+    description: Add shop sections via /eshop addsection
+    default: op
+
+  economyshopgui.eshop.editsection:
+    description: Edit shop sections via /eshop editsection
+    default: op
+
+  economyshopgui.eshop.deletesection:
+    description: Delete shop sections via /eshop deletesection
+    default: op
+
+  economyshopgui.eshop.import:
+    description: Import shop data via /eshop import
+    default: op
+
+  economyshopgui.eshop.migrate:
+    description: Migrate shop data via /eshop migrate
+    default: op
+
+  economyshopgui.eshop.layout:
+    description: Install, upload, and update layouts via /eshop
+    default: op
+
+  economyshopgui.eshop.transactionlogs:
+    description: Export transaction logs via /eshop transactionlogs
+    default: op
+
+  economyshopgui.eshop.shopstands.*:
+    description: All shop-stand management permissions
+    default: op
+    children:
+      economyshopgui.eshop.shopstands.give: true
+      economyshopgui.eshop.shopstands.destroy: true
+      economyshopgui.eshop.shopstands.browse: true
+      economyshopgui.eshop.shopstands.edit: true
+
+  economyshopgui.eshop.shopstands.give:
+    description: Give shop stands via /eshop shopstands give
+    default: op
+
+  economyshopgui.eshop.shopstands.destroy:
+    description: Destroy shop stands via /eshop shopstands destroy
+    default: op
+
+  economyshopgui.eshop.shopstands.browse:
+    description: Browse all shop stands via /eshop shopstands browse
+    default: op
+
+  economyshopgui.eshop.shopstands.edit:
+    description: Edit shop stands via /eshop shopstands edit
+    default: op
+
+  economyshopgui.update-notify:
+    description: Receive update notifications on join
+    default: op
