@@ -1,0 +1,6 @@
+name: EconomyShopGUI-OSS
+version: '1.0'
+main: io.github.Earth1283.economyShopGUIOSS.EconomyShopGUIOSS
+api-version: '1.21'
+load: STARTUP
+authors: [ Earth1283 ]
