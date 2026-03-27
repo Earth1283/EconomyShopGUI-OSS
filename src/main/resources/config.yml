@@ -88,6 +88,13 @@ placeholder-cache-seconds: 0
 # Use Paper's optimised item-metadata API when available (recommended: true).
 use-paper-meta: true
 
+# -- Marketplace ---------------------------------------------------------------
+# Layout marketplace for sharing and downloading pre-built shop layouts.
+# See docs/marketplace-api.rst for the full API contract.
+marketplace:
+  url: https://api.gpplugins.com:2096/val
+  token: ""
+
 # -- Miscellaneous -------------------------------------------------------------
 # Check GitHub for a newer version on startup and notify ops on join.
 update-checking: true

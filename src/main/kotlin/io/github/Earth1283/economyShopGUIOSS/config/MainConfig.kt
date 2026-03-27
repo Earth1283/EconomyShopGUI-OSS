@@ -111,7 +111,7 @@ data class MainConfig(
             resizeGuiBedrock = true,
             placeholderCacheSeconds = 0,
             usePaperMeta = true,
-            marketplaceUrl   = "https://marketplace.economyshopgui-oss.example.com/api/v1",
+            marketplaceUrl   = "https://api.gpplugins.com:2096/val",
             marketplaceToken = "",
             updateChecking = true,
             debug = false,

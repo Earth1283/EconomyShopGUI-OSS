@@ -25,10 +25,19 @@ Configured in ``config.yml``:
 .. code-block:: yaml
 
    marketplace:
-     url: https://marketplace.economyshopgui-oss.example.com/api/v1
+     url: https://api.gpplugins.com:2096/val
      token: ""   # bearer token for upload/update — obtain from the marketplace website
 
 All paths in this document are relative to the base URL.
+
+.. note::
+   The default URL above points to the gpplugins reference marketplace used by the
+   original EconomyShopGUI plugin.  Its wire protocol differs from the REST API
+   described here: it uses ``/createLayout``, ``/getLayout``, and ``/createUpdate``
+   endpoints with ZIP file uploads and a session-UUID token flow rather than
+   JSON + base64 payloads and Bearer tokens.  If you are implementing a clean-room
+   compatible marketplace server, follow the REST contract in this document and
+   configure a custom ``marketplace.url`` in ``config.yml``.
 
 Transport
 ~~~~~~~~~
@@ -301,7 +310,7 @@ Response ``201 Created``:
    {
      "id":   "abc123",
      "code": "DIAMONDS",
-     "url":  "https://marketplace.economyshopgui-oss.example.com/layout/DIAMONDS"
+     "url":  "https://api.gpplugins.com:2096/val/layout/DIAMONDS"
    }
 
 The ``code`` is the short share code administrators paste into

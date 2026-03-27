@@ -15,7 +15,7 @@ import java.time.Duration
  * ─────────────────────────────────────────────────────────────────────────────
  *
  * Base URL: configurable via `config.yml → marketplace.url`
- * Default:  https://marketplace.economyshopgui-oss.example.com/api/v1
+ * Default:  https://api.gpplugins.com:2096/val
  *
  * All requests carry the header:
  *   User-Agent: EconomyShopGUI-OSS/<plugin-version>
@@ -221,7 +221,7 @@ class MarketplaceClient(private val plugin: EconomyShopGUIOSS) {
     private val baseUrl: String get() =
         plugin.configManager.config.marketplaceUrl
             .trimEnd('/')
-            .ifBlank { "https://marketplace.economyshopgui-oss.example.com/api/v1" }
+            .ifBlank { "https://api.gpplugins.com:2096/val" }
 
     private val httpClient: HttpClient = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(10))
