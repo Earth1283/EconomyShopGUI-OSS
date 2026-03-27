@@ -58,6 +58,10 @@ tasks {
         isReproducibleFileOrder = true
         isPreserveFileTimestamps = false
 
+        // Merge META-INF/services/* files so Exposed's ServiceLoader can find
+        // DatabaseConnectionAutoRegistration after relocation.
+        mergeServiceFiles()
+
         // Relocate all shadowed libraries to avoid classpath conflicts
         relocate("org.bstats", "io.github.Earth1283.economyShopGUIOSS.libs.bstats")
         relocate("org.xerial.sqlite", "io.github.Earth1283.economyShopGUIOSS.libs.sqlite")
